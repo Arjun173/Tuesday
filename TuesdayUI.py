@@ -37,7 +37,7 @@ def process_tts_queue():
     root.after(100, process_tts_queue)  # Re-run every 100ms to keep the queue processing.
 
 def wake_word_listener(root, activate_callback):
-    """Listen for the wake word 'hey tuesday' to activate the assistant."""
+    """Listen for the wake word 'wakeup buddy' to activate the assistant."""
     def listen_for_wake_word():
         recognizer = sr.Recognizer()
         while True:
@@ -165,4 +165,5 @@ def main():
     root.mainloop()
 
 if __name__ == "__main__":
+
     main()
