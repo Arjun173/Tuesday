@@ -68,24 +68,24 @@ def run_tuesday_logic(command_input=None):
 
     if "play" in command:
         song = command.replace("play", "").strip()
-        talk(f"Playing {song} on YouTube 🎶")
+        talk(f"Playing {song} on YouTube ")
         try:
             pywhatkit.playonyt(song)
         except Exception as e:
             talk(f"Could not play {song}. Error: {e}")
 
-    elif "what's the time" in command:
+    elif "what's the time" in command or "what is the time" in command or "tell me the time" in command or "current time" in command or "time" in command:
         time = datetime.datetime.now().strftime('%I:%M %p')
         talk(f"It’s {time} ⏰")
 
-    elif "who is your creator" in command or "who is the developer" in command:
+    elif "who is your creator" in command or "who is your developer" in command:
         info = (
             "Arjun, Jagadeesh, Vinod are the developers of me and the investor is Madhu. "
             "They are studying in AANM&VVRSR polytechnic in Gudlavalleru college 💻"
         )
         talk(info)
 
-    elif "who is" in command:
+    elif "who is" in command or "what is" in command:
         person = command.replace("who is", "").strip()
         if person:
             try:
@@ -122,23 +122,24 @@ def run_tuesday_logic(command_input=None):
                 talk(f"Could not perform the search in Chrome. Error: {e}")
                 messagebox.showerror("Error", f"Could not open Chrome for search. Make sure ChromeDriver is correctly set up. Error: {e}")
 
-    elif "open file manager" in command or "open explorer" in command:
+    elif "open file manager" in command or "open explorer" in command or "files" in command:
         try:
+
             talk("Opening File Manager 🗂️")
             os.startfile(os.getcwd())
         except Exception as e:
             talk(f"Could not open File Manager. Error: {e}")
 
-    elif "joke" in command:
+    elif "joke" in command or "tell me a joke" in command:
         talk(pyjokes.get_joke())
 
     elif "open chrome" in command:
-        chrome_path = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+        chrome_path = "C:\\Users\\DELL\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe"
         if os.path.exists(chrome_path):
             talk("Opening Chrome 🚀")
             os.startfile(chrome_path)
         else:
-            talk("Chrome path not found. Please check the path in the code. 😬")
+            talk("Chrome path not found. Please check the path in the code. ")
             messagebox.showerror("Error", "Chrome path not found. Please update 'chrome_path' in the code.")
 
     elif "open code" in command or "open vs code" in command:
@@ -148,9 +149,12 @@ def run_tuesday_logic(command_input=None):
         except Exception as e:
             talk(f"Could not open VS Code. Make sure 'code' command is in your system's PATH. Error: {e}")
             messagebox.showerror("Error", f"Could not open VS Code. Error: {e}")
+    elif "hi" in command or "hello" in command or "hey" in command:
+        talk("hello! what can i do for you")
+    
 
     elif "exit" in command or "stop" in command or "quit" in command:
-        talk("Okay, see you later 👋")
+        talk("Okay, see you later ")
         sys.exit()
     else:
-        talk("I heard you, but I don’t understand that yet 😅")
+        talk("I heard you, but I don’t understand that yet..")
